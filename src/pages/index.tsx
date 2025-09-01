@@ -1,3 +1,5 @@
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
 import {
   SignedIn,
   SignedOut,
@@ -7,7 +9,12 @@ import {
 } from "@clerk/nextjs";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
+
 import { api, type RouterOutputs } from "~/utils/api";
+import Loading from "~/components/loading";
+
+dayjs.extend(relativeTime);
 
 const CreatePost = () => {
   const { user } = useUser();
@@ -16,9 +23,11 @@ const CreatePost = () => {
 
   return (
     <div className="flex items-start gap-4 border-b border-zinc-100 p-4">
-      <img
+      <Image
         src={user.imageUrl}
         alt="Profile image"
+        width={48}
+        height={48}
         className="h-12 shrink-0 rounded-full"
       />
       <div className="flex grow flex-col gap-4">
@@ -44,9 +53,11 @@ type PostWithAuthor = RouterOutputs["post"]["getAll"][number];
 const PostView = ({ post, author }: PostWithAuthor) => {
   return (
     <div className="flex items-start gap-4">
-      <img
+      <Image
         src={author.imageUrl}
         alt="Profile image"
+        width={48}
+        height={48}
         className="h-12 shrink-0 rounded-full"
       />
       <div className="flex grow flex-col">
@@ -55,7 +66,7 @@ const PostView = ({ post, author }: PostWithAuthor) => {
           <p className="font-normal text-zinc-500">
             <span>@{author.username}</span>
             <span> • </span>
-            <span>{post.createdAt.toDateString()}</span>
+            <span>{dayjs(post.createdAt).fromNow()}</span>
           </p>
         </div>
         <p>{post.content}</p>
@@ -64,9 +75,34 @@ const PostView = ({ post, author }: PostWithAuthor) => {
   );
 };
 
-export default function Home() {
-  const posts = api.post.getAll.useQuery();
+const Feed = () => {
+  const { data, isLoading } = api.post.getAll.useQuery();
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center p-6">
+        <Loading />
+      </div>
+    );
+  }
+
+  if (!data) return <div>Something went wrong</div>;
+
+  return (
+    <ul className="flex flex-col">
+      {data.map(({ post, author }) => (
+        <li
+          key={post.id}
+          className="flex flex-col border-b border-zinc-100 p-4"
+        >
+          <PostView post={post} author={author} />
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+export default function Home() {
   return (
     <>
       <Head>
@@ -96,18 +132,7 @@ export default function Home() {
             <p className="font-bold">Posts</p>
           </div>
           <CreatePost />
-          <div>
-            <ul className="flex flex-col">
-              {posts.data?.map(({ post, author }) => (
-                <li
-                  key={post.id}
-                  className="flex flex-col border-b border-zinc-100 p-4"
-                >
-                  <PostView post={post} author={author} />
-                </li>
-              ))}
-            </ul>
-          </div>
+          <Feed />
         </div>
       </main>
     </>

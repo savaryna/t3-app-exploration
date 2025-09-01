@@ -13,15 +13,20 @@ dayjs.extend(relativeTime);
 
 const CreatePost = () => {
   const [content, setContent] = useState("");
-
   const { user } = useUser();
   const utils = api.useUtils();
-  const { mutate, isPending } = api.post.create.useMutation({
+
+  const { mutate, isPending, error } = api.post.create.useMutation({
     onSuccess: () => {
       setContent("");
       void utils.post.getAll.invalidate();
     },
   });
+
+  const errorMessage =
+    error &&
+    (error.data?.zodError?.fieldErrors?.content?.[0] ||
+      "An error ocurred, try again later");
 
   if (!user) return null;
 
@@ -49,13 +54,16 @@ const CreatePost = () => {
           placeholder="What's happening?"
           className="h-12 border-b border-zinc-100 text-xl outline-none focus:border-zinc-900"
         />
-        <button
-          type="submit"
-          disabled={isPending || content.length === 0}
-          className="cursor-pointer self-end rounded-full bg-zinc-900 px-4 py-2 font-bold text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:bg-zinc-400"
-        >
-          Post
-        </button>
+        <div className="flex w-full items-center">
+          {errorMessage && <p className="text-red-700">{errorMessage}</p>}
+          <button
+            type="submit"
+            disabled={isPending || content.length === 0}
+            className="ml-auto cursor-pointer rounded-full bg-zinc-900 px-4 py-2 font-bold text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:bg-zinc-400"
+          >
+            Post
+          </button>
+        </div>
       </form>
     </div>
   );

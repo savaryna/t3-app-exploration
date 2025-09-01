@@ -13,7 +13,7 @@ const geist = Geist({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider>
-      <div className={geist.className}>
+      <div className={`container mx-auto ${geist.className}`}>
         <Component {...pageProps} />
       </div>
     </ClerkProvider>

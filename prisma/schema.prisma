@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-    provider = "mysql"
+    provider = "mongodb"
     url      = env("DATABASE_URL")
 
     // If you have enabled foreign key constraints for your database, remove this line.
@@ -15,7 +15,7 @@ datasource db {
 }
 
 model Post {
-    id        Int      @id @default(autoincrement())
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
     name      String
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt

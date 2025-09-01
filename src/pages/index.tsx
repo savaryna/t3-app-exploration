@@ -19,7 +19,7 @@ const CreatePost = () => {
   const { mutate, isPending } = api.post.create.useMutation({
     onSuccess: () => {
       setContent("");
-      utils.post.getAll.invalidate();
+      void utils.post.getAll.invalidate();
     },
   });
 

@@ -4,13 +4,14 @@ This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3
 
 ## Built with
 
-- [Next.js](https://nextjs.org)
-- [Clerk](https://clerk.com)
-- [Prisma](https://prisma.io)
-- [MongoDB](https://www.mongodb.com)
-- [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+- [Next.js](https://nextjs.org)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Prisma](https://prisma.io)
+- [Clerk](https://clerk.com)
+- [MongoDB](https://www.mongodb.com)
 - [Vercel](https://vercel.com)
+- [Upstash](https://upstash.com) for rate limiting
 
 ## Learn More
 

@@ -20,7 +20,7 @@ const CreatePost = () => {
 
   const errorMessage =
     error &&
-    (error.data?.zodError?.fieldErrors?.content?.[0] ||
+    (error.data?.zodError?.fieldErrors?.content?.[0] ??
       "An error ocurred, try again later");
 
   if (!user) return null;

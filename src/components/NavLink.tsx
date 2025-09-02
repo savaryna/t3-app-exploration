@@ -10,7 +10,7 @@ const NavLink = ({ children, href }: NavLinkProps) => {
 
   const onClick: MouseEventHandler = (e) => {
     e.preventDefault();
-    router.push(href);
+    void router.push(href);
   };
 
   return (

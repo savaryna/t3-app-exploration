@@ -20,7 +20,7 @@ export const profileRouter = createTRPCRouter({
 
       const user = users.data.find((user) => user.username === input.username);
 
-      if (!user || !user.username) {
+      if (!user) {
         throw new TRPCError({
           code: "NOT_FOUND",
           message: "Profile for username not found",
@@ -29,8 +29,8 @@ export const profileRouter = createTRPCRouter({
 
       return {
         id: user.id,
-        username: user.username,
-        fullName: user.fullName,
+        username: user.username ?? "anonymous",
+        fullName: user.fullName ?? "Anonymous",
         imageUrl: user.imageUrl,
       };
     }),

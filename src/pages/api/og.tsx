@@ -1,16 +1,14 @@
 import { ImageResponse } from "@vercel/og";
 
-async function loadGoogleFont(
+const loadGoogleFont = async (
   name: string,
   weight: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900,
-) {
+) => {
   const url = `https://fonts.googleapis.com/css2?family=${name}:wght@${weight}`;
   const css = await (await fetch(url)).text();
-  const resource = css.match(
-    /src: url\((.+)\) format\('(opentype|truetype)'\)/,
-  );
+  const resource = /src: url\((.+)\) format\('(opentype|truetype)'\)/.exec(css);
 
-  if (resource && resource[1]) {
+  if (resource?.[1]) {
     console.log({ URRRRRR: resource[1] });
     const response = await fetch(resource[1]);
     if (response.status == 200) {
@@ -23,13 +21,9 @@ async function loadGoogleFont(
   }
 
   throw new Error("Failed to load font data");
-}
-
-export const config = {
-  runtime: "edge",
 };
 
-export default async function () {
+const handler = async () => {
   return new ImageResponse(
     (
       <div
@@ -73,4 +67,10 @@ export default async function () {
       ],
     },
   );
-}
+};
+
+export const config = {
+  runtime: "edge",
+};
+
+export default handler;

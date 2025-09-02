@@ -31,6 +31,7 @@
     "@trpc/server": "^11.0.0",
     "@upstash/ratelimit": "^2.0.6",
     "@upstash/redis": "^1.35.3",
+    "@vercel/og": "^0.8.5",
     "dayjs": "^1.11.18",
     "next": "15.2",
     "react": "^19.0.0",

@@ -15,6 +15,7 @@ const Layout = ({ children }: PropsWithChildren) => {
         <title>T3 - App Exploration</title>
         <meta name="description" content="T3 - App Exploration" />
         <link rel="icon" href="/favicon.ico" />
+        <meta property="og:image" content="/api/og" />
       </Head>
 
       <main className={`container mx-auto grid h-screen grid-cols-4`}>

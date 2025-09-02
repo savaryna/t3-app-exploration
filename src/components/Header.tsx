@@ -10,13 +10,13 @@ const Header = ({ children, showBackButton = false }: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <header className="sticky top-0 z-10 flex h-17 shrink-0 items-center gap-3 border-b border-zinc-100 bg-white/20 px-4 pt-3 backdrop-blur-md">
+    <header className="sticky top-0 z-10 flex h-17 shrink-0 items-center gap-3 border-b border-zinc-100 bg-white/20 px-4 pt-3 backdrop-blur-md dark:border-zinc-800 dark:bg-black/20">
       {showBackButton && (
         <button
           type="button"
           title="Go back"
           onClick={() => router.back()}
-          className="rounded-full p-2 hover:cursor-pointer hover:bg-black/10"
+          className="rounded-full p-2 transition-all hover:cursor-pointer hover:bg-black/10 dark:hover:bg-white/10"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -34,7 +34,7 @@ const Header = ({ children, showBackButton = false }: HeaderProps) => {
       <p className="font-bold">{children}</p>
       <Link
         href="https://github.com/savaryna"
-        className="ml-auto text-zinc-500 transition-colors hover:text-zinc-900"
+        className="ml-auto text-zinc-500 transition-all hover:opacity-90"
       >
         Made by @savaryna
       </Link>

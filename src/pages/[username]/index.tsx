@@ -23,15 +23,15 @@ const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
 
       <Header showBackButton>Profile</Header>
 
-      <div className="block h-48 w-full shrink-0 bg-gradient-to-t from-zinc-50 to-zinc-100"></div>
+      <div className="block h-48 w-full shrink-0 bg-zinc-50 dark:bg-zinc-900"></div>
 
-      <div className="-mt-16 border-b border-zinc-100 px-6 pb-6">
+      <div className="-mt-16 border-b border-zinc-100 px-6 pb-6 dark:border-zinc-800">
         <Image
           src={author.data.imageUrl}
           alt="Profile image"
           width={128}
           height={128}
-          className="h-32 shrink-0 rounded-full border-2 border-zinc-100"
+          className="mb-6 h-32 shrink-0 rounded-full border-2 border-zinc-100 dark:border-zinc-800"
         />
         <p className="text-xl font-bold">{author.data.fullName}</p>
         <p className="text-zinc-500">@{author.data.username}</p>

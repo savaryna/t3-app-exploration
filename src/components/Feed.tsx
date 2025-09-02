@@ -13,7 +13,7 @@ export type PostProps = RouterOutputs["post"]["getAll"][number];
 
 export const Post = (post: PostProps) => {
   return (
-    <div className="relative flex items-start gap-4 border-b border-zinc-100 p-4">
+    <div className="relative flex items-start gap-4 border-b border-zinc-100 p-4 dark:border-zinc-800">
       <Link
         href={`/${post.author.username}/posts/${post.id}`}
         className="absolute inset-0"
@@ -28,9 +28,9 @@ export const Post = (post: PostProps) => {
       <div className="flex grow flex-col">
         <Link
           href={`/${post.author.username}`}
-          className="relative flex gap-2 self-start"
+          className="relative flex flex-wrap self-start"
         >
-          <div className="font-bold">{post.author.fullName}</div>
+          <div className="pr-2 font-bold">{post.author.fullName}</div>
           <div className="font-normal text-zinc-500">
             <span>@{post.author.username}</span>
             <span> • </span>

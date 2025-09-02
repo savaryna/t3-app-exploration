@@ -17,7 +17,7 @@ const NavLink = ({ children, href }: NavLinkProps) => {
     <a
       href={href}
       onClick={onClick}
-      className={`flex items-center gap-5 rounded-full p-3 text-xl hover:bg-zinc-100 ${router.asPath === href ? "font-bold" : ""}`}
+      className={`flex items-center gap-5 rounded-full p-3 text-xl hover:bg-zinc-100 dark:hover:bg-zinc-900 ${router.asPath === href ? "font-bold" : ""}`}
     >
       {children}
     </a>

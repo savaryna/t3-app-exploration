@@ -32,7 +32,7 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="flex items-start gap-4 border-b border-zinc-100 p-4 transition-colors has-focus-within:bg-zinc-50">
+    <div className="flex items-start gap-4 border-b border-zinc-100 p-4 transition-colors has-focus-within:bg-zinc-50 dark:border-zinc-800 dark:has-focus-within:bg-zinc-900">
       <Image
         src={user.imageUrl}
         alt="Profile image"
@@ -48,14 +48,14 @@ const CreatePost = () => {
           onChange={(e) => setContent(e.target.value)}
           disabled={isPending}
           placeholder="What's happening?"
-          className="h-12 border-b border-zinc-100 text-xl outline-none focus:border-zinc-900"
+          className="h-12 border-b border-zinc-100 text-xl outline-none dark:border-zinc-800"
         />
         <div className="flex w-full items-center">
           {errorMessage && <p className="text-red-700">{errorMessage}</p>}
           <button
             type="submit"
             disabled={isPending || content.length === 0}
-            className="ml-auto cursor-pointer rounded-full bg-zinc-900 px-4 py-2 font-bold text-white transition-colors hover:bg-zinc-700 disabled:cursor-not-allowed disabled:bg-zinc-400"
+            className="ml-auto cursor-pointer rounded-full bg-zinc-900 px-4 py-2 font-bold text-white transition-all hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-white dark:text-black"
           >
             Post
           </button>

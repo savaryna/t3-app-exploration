@@ -12,9 +12,9 @@ const Layout = ({ children }: PropsWithChildren) => {
         <link rel="icon" href="/favicon.ico" />
         <meta property="og:image" content="/api/og" />
       </Head>
-      <main className="mx-auto flex h-screen flex-col-reverse md:container md:flex-row">
+      <main className="mx-auto flex h-svh flex-col-reverse md:container md:flex-row">
         <Navigation />
-        <div className="flex h-screen grow flex-col overflow-y-auto border-r border-zinc-100">
+        <div className="flex h-screen grow flex-col overflow-y-auto border-r border-zinc-100 dark:border-zinc-800">
           {children}
         </div>
       </main>

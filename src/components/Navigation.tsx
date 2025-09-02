@@ -8,11 +8,11 @@ const Navigation = () => {
   const { user } = useUser();
 
   return (
-    <nav className="flex min-w-2xs gap-2 border-zinc-100 p-3 max-md:items-center max-md:border-t md:flex-col md:border-r">
+    <nav className="flex min-w-2xs gap-2 border-zinc-100 p-3 max-md:items-center max-md:border-t md:flex-col md:border-r dark:border-zinc-800">
       <div className="hidden h-14 items-center justify-between md:flex">
         <Link
           href="/"
-          className="rounded-full p-3 text-xl font-black hover:bg-zinc-100"
+          className="rounded-full p-3 text-xl font-black hover:bg-zinc-100 dark:hover:bg-zinc-900"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ const Navigation = () => {
       </NavLink>
       {user ? (
         <SignOutButton>
-          <button className="mt-auto flex items-center gap-5 rounded-full p-3 text-left transition-colors hover:cursor-pointer hover:bg-zinc-100 max-md:ml-auto">
+          <button className="mt-auto flex items-center gap-5 rounded-full p-3 text-left transition-colors hover:cursor-pointer hover:bg-zinc-100 max-md:ml-auto dark:hover:bg-zinc-900">
             <Image
               src={user.imageUrl}
               alt="Profile image"
@@ -81,7 +81,7 @@ const Navigation = () => {
         </SignOutButton>
       ) : (
         <SignInButton>
-          <button className="mt-auto flex items-center gap-5 rounded-full p-3 transition-colors hover:cursor-pointer hover:bg-zinc-100 max-md:ml-auto">
+          <button className="mt-auto flex items-center gap-5 rounded-full p-3 transition-colors hover:cursor-pointer hover:bg-zinc-100 max-md:ml-auto dark:hover:bg-zinc-900">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="32"

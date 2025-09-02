@@ -1,10 +1,10 @@
 import { useUser } from "@clerk/nextjs";
-import Image from "next/image";
-
-import { api } from "~/utils/api";
-import { useState } from "react";
-import Feed from "~/components/Feed";
 import type { NextPage } from "next";
+import Image from "next/image";
+import { useState } from "react";
+
+import Feed from "~/components/Feed";
+import { api } from "~/utils/api";
 
 const CreatePost = () => {
   const [content, setContent] = useState("");

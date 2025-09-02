@@ -1,8 +1,9 @@
-import type { PropsWithChildren } from "react";
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
-import Link from "next/link";
-import Image from "next/image";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+import type { PropsWithChildren } from "react";
+
 import NavLink from "./NavLink";
 
 const Layout = ({ children }: PropsWithChildren) => {

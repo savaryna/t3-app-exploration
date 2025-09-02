@@ -1,6 +1,7 @@
 import { createServerSideHelpers } from "@trpc/react-query/server";
-import { appRouter } from "~/server/api/root";
 import superjson from "superjson";
+
+import { appRouter } from "~/server/api/root";
 import { db } from "~/server/db";
 
 export const createSsgHelper = () =>

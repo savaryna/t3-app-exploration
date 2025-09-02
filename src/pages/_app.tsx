@@ -1,10 +1,11 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import { type AppType } from "next/app";
 import { Geist } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
 
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+
 import Layout from "~/components/Layout";
 
 const geist = Geist({

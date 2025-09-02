@@ -1,11 +1,11 @@
 import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { api } from "~/utils/api";
 
-import { createSsgHelper } from "~/server/utils/ssgHelper";
 import Feed from "~/components/Feed";
 import Header from "~/components/Header";
+import { createSsgHelper } from "~/server/utils/ssgHelper";
+import { api } from "~/utils/api";
 
 const ProfilePage: NextPage<{ username: string }> = ({ username }) => {
   const author = api.profile.getByUsername.useQuery({ username });

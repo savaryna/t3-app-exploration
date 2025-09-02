@@ -10,7 +10,7 @@ const Header = ({ children, showBackButton = false }: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <header className="sticky top-0 z-10 flex h-14 shrink-0 items-center gap-3 border-b border-zinc-100 bg-white/20 px-4 backdrop-blur-md">
+    <header className="sticky top-0 z-10 flex h-17 shrink-0 items-center gap-3 border-b border-zinc-100 bg-white/20 px-4 pt-3 backdrop-blur-md">
       {showBackButton && (
         <button
           type="button"

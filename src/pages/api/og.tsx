@@ -9,7 +9,6 @@ const loadGoogleFont = async (
   const resource = /src: url\((.+)\) format\('(opentype|truetype)'\)/.exec(css);
 
   if (resource?.[1]) {
-    console.log({ URRRRRR: resource[1] });
     const response = await fetch(resource[1]);
     if (response.status == 200) {
       return {

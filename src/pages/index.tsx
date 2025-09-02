@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useState } from "react";
 
 import Feed from "~/components/Feed";
+import Header from "~/components/Header";
 import { api } from "~/utils/api";
 
 const CreatePost = () => {
@@ -69,9 +70,7 @@ const HomePage: NextPage = () => {
 
   return (
     <>
-      <div className="sticky top-0 z-10 flex h-14 flex-shrink-0 items-center border-b border-zinc-100 bg-white/20 px-6 backdrop-blur-md">
-        <p className="font-bold">Posts</p>
-      </div>
+      <Header>Posts</Header>
       <CreatePost />
       <Feed posts={posts.data} isLoading={posts.isLoading} />
     </>

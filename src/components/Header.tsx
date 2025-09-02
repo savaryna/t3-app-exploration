@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 import type { PropsWithChildren } from "react";
 
@@ -31,6 +32,12 @@ const Header = ({ children, showBackButton = false }: HeaderProps) => {
         </button>
       )}
       <p className="font-bold">{children}</p>
+      <Link
+        href="https://github.com/savaryna"
+        className="ml-auto text-zinc-500 transition-colors hover:text-zinc-900"
+      >
+        Made by @savaryna
+      </Link>
     </header>
   );
 };

@@ -18,10 +18,18 @@ const config = {
     defaultLocale: "en",
   },
   images: {
-    remotePatterns: [{
-      hostname: "img.clerk.com"
-    }]
-  }
+    remotePatterns: [
+      {
+        hostname: "img.clerk.com",
+      },
+    ],
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default config;

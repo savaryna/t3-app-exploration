@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
+import Layout from "~/components/Layout";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -13,9 +14,9 @@ const geist = Geist({
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider>
-      <div className={`container mx-auto ${geist.className}`}>
-        <Component {...pageProps} />
-      </div>
+      <Layout>
+        <Component {...pageProps} className={geist.className} />
+      </Layout>
     </ClerkProvider>
   );
 };

@@ -51,7 +51,7 @@ export const createTRPCContext = (opts: CreateNextContextOptions) => {
 
   return {
     ...createInnerTRPCContext({}),
-    session,
+    userId: session.userId,
   };
 };
 
@@ -137,7 +137,7 @@ export const publicProcedure = t.procedure.use(timingMiddleware);
  * It checks for a valid session and throws an error if the user is not logged in.
  */
 const authMiddleware = t.middleware(({ ctx, next }) => {
-  if (!ctx.session?.userId) {
+  if (!ctx.userId) {
     throw new TRPCError({
       code: "UNAUTHORIZED",
     });
@@ -146,7 +146,7 @@ const authMiddleware = t.middleware(({ ctx, next }) => {
   return next({
     ctx: {
       ...ctx,
-      session: ctx.session,
+      userId: ctx.userId,
     },
   });
 });
